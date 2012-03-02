@@ -120,7 +120,7 @@ static BOOL isRun = NO;
     if (!pngData) {
         STFail(@"Fail to create image.");
     }
-    [request setData:pngData withFileName:@"sample.jpg" andContentType:@"image/png" forKey:@"file"];
+    [request setData:pngData withFileName:@"sample.png" andContentType:@"image/png" forKey:@"file"];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
