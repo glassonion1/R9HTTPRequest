@@ -18,6 +18,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 @implementation R9HTTPRequest {
     NSURL *_url;
+    NSHTTPURLResponse *_responseHeader;
     NSMutableData *_responseData;
     NSMutableDictionary *_headers;
     NSMutableDictionary *_bodies;
@@ -25,8 +26,8 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     BOOL _isExecuting, _isFinished;
 }
 
-@synthesize completionBlock = _completionBlock;
-@synthesize failedBlock = _failedBlock;
+@synthesize completionHandler = _completionHandler;
+@synthesize failedHandler = _failedHandler;
 @synthesize HTTPMethod = _HTTPMethod;
 @synthesize shouldRedirect = _shouldRedirect;
 
@@ -109,6 +110,8 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 	[_fileInfo setValue:data forKey:@"data"];
 }
 
+#pragma mark - Private methods
+
 - (NSData *)createMultipartBodyData
 {
     NSMutableString *bodyString = [NSMutableString string];
@@ -144,6 +147,8 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     return [content dataUsingEncoding:NSUTF8StringEncoding];
 }
 
+#pragma mark - NSURLConnectionDelegate and NSURLConnectionDataDelegate methods
+
 // リダイレクトの処理
 - (NSURLRequest *)connection:(NSURLConnection *)connection 
              willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
@@ -157,6 +162,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 // レスポンスヘッダの受け取り
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    _responseHeader = [(NSHTTPURLResponse *)response copy];
     _responseData = [[NSMutableData alloc] init];
 }
 
@@ -169,7 +175,9 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 // 通信エラー
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    self.failedBlock(error);
+    if (self.failedHandler) {
+        self.failedHandler(error);
+    }
     [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
     [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
 }
@@ -177,13 +185,12 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 // 通信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSString *responseString;
+    NSLog(@"%d", [[NSThread currentThread] isMainThread]);
+    NSString *responseString = nil;
     if (_responseData) {
         responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
-    } else {
-        responseString = @"404 Not Found";
     }
-    self.completionBlock(responseString);
+    self.completionHandler(_responseHeader, responseString);
     [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
     [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
 }

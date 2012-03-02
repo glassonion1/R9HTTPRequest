@@ -7,13 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^CompletionBlock)(NSString *responseString);
-typedef void(^FailedBlock)(NSError *error);
+typedef void(^CompletionHandler)(NSHTTPURLResponse *responseHeader, NSString *responseString);
+typedef void(^FailedHandler)(NSError *error);
 
-@interface R9HTTPRequest : NSOperation
+@interface R9HTTPRequest : NSOperation <NSURLConnectionDataDelegate>
 
-@property (copy, nonatomic) CompletionBlock completionBlock;
-@property (copy, nonatomic) FailedBlock failedBlock;
+@property (copy, nonatomic) CompletionHandler completionHandler;
+@property (copy, nonatomic) FailedHandler failedHandler;
 @property (strong, nonatomic) NSString *HTTPMethod;
 @property (nonatomic) BOOL shouldRedirect;
 

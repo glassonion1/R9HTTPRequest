@@ -1,9 +1,5 @@
 //
 //  NSString+Crypto.h
-//  HatenaNote
-//
-//  Created by 藤田 泰介 on 12/02/24.
-//  Copyright (c) 2012 Commonsense. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
