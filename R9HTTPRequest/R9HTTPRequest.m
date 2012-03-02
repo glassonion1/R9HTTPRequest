@@ -27,6 +27,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 }
 
 @synthesize completionHandler = _completionHandler;
+@synthesize uploadProgressHandler = _uploadProgressHandler;
 @synthesize failedHandler = _failedHandler;
 @synthesize HTTPMethod = _HTTPMethod;
 @synthesize shouldRedirect = _shouldRedirect;
@@ -172,6 +173,19 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     [_responseData appendData:data];
 }
 
+// Progress
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten
+    totalBytesWritten:(NSInteger)totalBytesWritten
+    totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    if (totalBytesExpectedToWrite == 0) return;
+    if (self.uploadProgressHandler) {
+        float progress = [[NSNumber numberWithInteger:totalBytesWritten] floatValue];
+        float total = [[NSNumber numberWithInteger: totalBytesExpectedToWrite] floatValue];
+        self.uploadProgressHandler(progress / total);
+    }
+}
+
 // 通信エラー
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
@@ -185,7 +199,6 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 // 通信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"%d", [[NSThread currentThread] isMainThread]);
     NSString *responseString = nil;
     if (_responseData) {
         responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];

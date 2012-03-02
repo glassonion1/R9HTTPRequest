@@ -24,6 +24,7 @@
 		6E63E27C15003C9E0089672E /* R9HTTPWSSERequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27615003C9E0089672E /* R9HTTPWSSERequest.m */; };
 		6E63E27D15003C9E0089672E /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27815003C9E0089672E /* R9HTTPRequest.m */; };
 		9685FE421500938B00FC255F /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 9685FE411500938B00FC255F /* sync.png */; };
+		9685FE4915009BDC00FC255F /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9685FE4815009BDC00FC255F /* sample.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		6E63E27715003C9E0089672E /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequest.h; sourceTree = "<group>"; };
 		6E63E27815003C9E0089672E /* R9HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequest.m; sourceTree = "<group>"; };
 		9685FE411500938B00FC255F /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
+		9685FE4815009BDC00FC255F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 		6E63E25A15003B5D0089672E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9685FE4815009BDC00FC255F /* sample.jpg */,
 				9685FE411500938B00FC255F /* sync.png */,
 				6E63E25B15003B5D0089672E /* R9HTTPRequestTests-Info.plist */,
 				6E63E25C15003B5D0089672E /* InfoPlist.strings */,
@@ -253,6 +256,7 @@
 			files = (
 				6E63E24615003B5C0089672E /* InfoPlist.strings in Resources */,
 				9685FE421500938B00FC255F /* sync.png in Resources */,
+				9685FE4915009BDC00FC255F /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

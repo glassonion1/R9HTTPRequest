@@ -108,7 +108,7 @@ static BOOL isRun = NO;
     [queue addOperation:request];
 }
 
-- (void)testMultipartPOSTRequest
+- (void)testMultipartPOSTRequestWithPNG
 {
     // see http://posttestserver.com/
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"https://posttestserver.com/post.php"]];
@@ -120,11 +120,36 @@ static BOOL isRun = NO;
     if (!pngData) {
         STFail(@"Fail to create image.");
     }
-    [request setData:pngData withFileName:@"sample.png" andContentType:@"image/png" forKey:@"file"];
+    [request setData:pngData withFileName:@"sample.jpg" andContentType:@"image/png" forKey:@"file"];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
         isRun = NO;
+    }];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [queue addOperation:request];
+}
+
+- (void)testMultipartPOSTRequestWithJPG
+{
+    // see http://posttestserver.com/
+    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"https://posttestserver.com/post.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request addBody:@"test" forKey:@"TestKey"];
+    // create image 
+    UIImage *image = [UIImage imageNamed:@"sample.jpg"];
+    NSData *jpgData = [[NSData alloc] initWithData:UIImageJPEGRepresentation(image, 80)];
+    if (!jpgData) {
+        STFail(@"Fail to create image.");
+    }
+    [request setData:jpgData withFileName:@"sample.jpg" andContentType:@"image/jpg" forKey:@"file"];
+    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+        NSLog(@"%@", responseString);
+        STAssertTrue(responseHeader.statusCode == 200, @"");
+        isRun = NO;
+    }];
+    [request setUploadProgressHandler:^(float newProgress){
+        NSLog(@"%g", newProgress);
     }];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [queue addOperation:request];
