@@ -17,6 +17,7 @@ typedef void(^FailedHandler)(NSError *error);
 @property (copy, nonatomic) FailedHandler failedHandler;
 @property (copy, nonatomic) UploadProgressHandler uploadProgressHandler;
 @property (strong, nonatomic) NSString *HTTPMethod;
+@property (strong, nonatomic) NSOperationQueue *queue;
 @property (nonatomic) BOOL shouldRedirect;
 
 - (id)initWithURL:(NSURL *)targetUrl;
@@ -26,5 +27,7 @@ typedef void(^FailedHandler)(NSError *error);
 - (void)addBody:(NSString *)value forKey:(NSString *)key;
 
 - (void)setData:(NSData *)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
+
+- (void)startRequest;
 
 @end

@@ -31,6 +31,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 @synthesize failedHandler = _failedHandler;
 @synthesize HTTPMethod = _HTTPMethod;
 @synthesize shouldRedirect = _shouldRedirect;
+@synthesize queue = _queue;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString*)key
 {
@@ -61,6 +62,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     self = [super init];
     if (self) {
         _url = targetUrl;
+        _queue = [[NSOperationQueue alloc] init];
         _headers = [[NSMutableDictionary alloc] init];
         _bodies = [[NSMutableDictionary alloc] init];
         _fileInfo = [[NSMutableDictionary alloc] init];
@@ -68,6 +70,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
         _HTTPMethod = @"GET";
     }  
     return self;
+}
+
+- (void)startRequest
+{
+    [self.queue addOperation:self];
 }
 
 - (void)start

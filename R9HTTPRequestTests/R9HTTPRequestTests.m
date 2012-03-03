@@ -34,8 +34,7 @@ static BOOL isRun = NO;
         STAssertTrue(responseHeader.statusCode == 200, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 - (void)test404NotFound
@@ -45,8 +44,7 @@ static BOOL isRun = NO;
         STAssertTrue(responseHeader.statusCode == 404, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 - (void)testConnectionError
@@ -61,8 +59,7 @@ static BOOL isRun = NO;
         STAssertTrue(YES, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 - (void)testShouldRedirectYes
@@ -73,8 +70,7 @@ static BOOL isRun = NO;
         STAssertTrue(responseHeader.statusCode == 200, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 /* 単体でしかテストが通らない
@@ -88,10 +84,9 @@ static BOOL isRun = NO;
         STAssertTrue(responseHeader.statusCode == 301, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
- */
+*/
 
 - (void)testPOSTRequest
 {
@@ -104,8 +99,7 @@ static BOOL isRun = NO;
         STAssertTrue(responseHeader.statusCode == 200, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 - (void)testMultipartPOSTRequestWithPNG
@@ -126,8 +120,7 @@ static BOOL isRun = NO;
         STAssertTrue(responseHeader.statusCode == 200, @"");
         isRun = NO;
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 - (void)testMultipartPOSTRequestWithJPG
@@ -151,8 +144,7 @@ static BOOL isRun = NO;
     [request setUploadProgressHandler:^(float newProgress){
         NSLog(@"%g", newProgress);
     }];
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [queue addOperation:request];
+    [request startRequest];
 }
 
 @end
