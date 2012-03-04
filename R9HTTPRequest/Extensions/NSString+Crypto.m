@@ -1,5 +1,5 @@
 //
-//  NSString+Crypto.m
+// NSString+Crypto.m
 //
 
 #import "NSString+Crypto.h"
