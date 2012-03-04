@@ -147,4 +147,15 @@ static BOOL isRun = NO;
     [request startRequest];
 }
 
+- (void)testWSSERequest 
+{
+    R9HTTPWSSERequest *request = [[R9HTTPWSSERequest alloc] initWithURL:[NSURL URLWithString:@"http://d.hatena.ne.jp/{hatenaID}/atom/draft"] andUserId:@"hatenaID" andPassword:@"password"];
+    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+        NSLog(@"%@", responseString);
+        STAssertTrue(responseHeader.statusCode == 200, @"");
+        isRun = NO;
+    }];
+    [request startRequest];
+}
+
 @end
