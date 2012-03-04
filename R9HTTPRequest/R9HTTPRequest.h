@@ -17,7 +17,6 @@ typedef void(^FailedHandler)(NSError *error);
 @property (copy, nonatomic) FailedHandler failedHandler;
 @property (copy, nonatomic) UploadProgressHandler uploadProgressHandler;
 @property (strong, nonatomic) NSString *HTTPMethod;
-@property (strong, nonatomic) NSOperationQueue *queue;
 @property (nonatomic) BOOL shouldRedirect;
 
 - (id)initWithURL:(NSURL *)targetUrl;

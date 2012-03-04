@@ -23,6 +23,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     NSMutableDictionary *_headers;
     NSMutableDictionary *_bodies;
     NSMutableDictionary *_fileInfo;
+    NSOperationQueue *_queue;
     BOOL _isExecuting, _isFinished;
 }
 
@@ -31,7 +32,6 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 @synthesize failedHandler = _failedHandler;
 @synthesize HTTPMethod = _HTTPMethod;
 @synthesize shouldRedirect = _shouldRedirect;
-@synthesize queue = _queue;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString*)key
 {
@@ -74,7 +74,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 - (void)startRequest
 {
-    [self.queue addOperation:self];
+    [_queue addOperation:self];
 }
 
 - (void)start
