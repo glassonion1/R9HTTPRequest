@@ -29,6 +29,7 @@ static BOOL isRun = NO;
 - (void)testGETRequest
 {
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
+    [request setTimeoutInterval:360];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
@@ -92,6 +93,7 @@ static BOOL isRun = NO;
 {
     // see http://posttestserver.com/
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://posttestserver.com/post.php"]];
+    [request setTimeoutInterval:360];
     [request setHTTPMethod:@"POST"];
     [request addBody:@"test" forKey:@"TestKey"];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
@@ -127,6 +129,7 @@ static BOOL isRun = NO;
 {
     // see http://posttestserver.com/
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"https://posttestserver.com/post.php"]];
+    [request setTimeoutInterval:360];
     [request setHTTPMethod:@"POST"];
     [request addBody:@"test" forKey:@"TestKey"];
     // create image 
@@ -153,6 +156,10 @@ static BOOL isRun = NO;
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
+        isRun = NO;
+    }];
+    [request setFailedHandler:^(NSError *error) {
+        STFail(@"%@", error);
         isRun = NO;
     }];
     [request startRequest];

@@ -18,6 +18,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 @implementation R9HTTPRequest {
     NSURL *_url;
+    NSTimeInterval _timeoutSeconds;
     NSHTTPURLResponse *_responseHeader;
     NSMutableData *_responseData;
     NSMutableDictionary *_headers;
@@ -62,6 +63,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     self = [super init];
     if (self) {
         _url = targetUrl;
+        _timeoutSeconds = 0;
         _queue = [[NSOperationQueue alloc] init];
         _headers = [[NSMutableDictionary alloc] init];
         _bodies = [[NSMutableDictionary alloc] init];
@@ -92,12 +94,22 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     } else {
         [request setHTTPBody:[self createBodyData]];
     }
+    if (_timeoutSeconds > 240) {
+        [request setTimeoutInterval:_timeoutSeconds];
+    }
     NSURLConnection *conn = [NSURLConnection connectionWithRequest:request delegate:self];
+    NSLog(@"TimeOut:%g", [request timeoutInterval]);
     if (conn != nil) {
         do {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         } while (_isExecuting);
     }
+}
+
+- (void)setTimeoutInterval:(NSTimeInterval)seconds
+{
+    NSAssert(seconds > 240, @"TimeoutInterval must be greater than 240 seconds.");
+    _timeoutSeconds = seconds;
 }
 
 - (void)addHeader:(NSString *)value forKey:(NSString *)key
