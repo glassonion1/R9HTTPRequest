@@ -13,6 +13,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 - (NSData *)createMultipartBodyData;
 - (NSData *)createBodyData;
+- (void)finish;
 
 @end
 
@@ -33,6 +34,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 @synthesize failedHandler = _failedHandler;
 @synthesize HTTPMethod = _HTTPMethod;
 @synthesize shouldRedirect = _shouldRedirect;
+@synthesize runOnMainThread = _runOnMainThread;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString*)key
 {
@@ -64,11 +66,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     if (self) {
         _url = targetUrl;
         _timeoutSeconds = 0;
-        _queue = [[NSOperationQueue alloc] init];
         _headers = [[NSMutableDictionary alloc] init];
         _bodies = [[NSMutableDictionary alloc] init];
         _fileInfo = [[NSMutableDictionary alloc] init];
         _shouldRedirect = YES;
+        _runOnMainThread = NO;
         _HTTPMethod = @"GET";
     }  
     return self;
@@ -76,6 +78,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 - (void)startRequest
 {
+    if (self.isRunOnMainThread) {
+        _queue = [NSOperationQueue mainQueue];
+    } else {
+        _queue = [[NSOperationQueue alloc] init];
+    }
     [_queue addOperation:self];
 }
 
@@ -98,7 +105,6 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
         [request setTimeoutInterval:_timeoutSeconds];
     }
     NSURLConnection *conn = [NSURLConnection connectionWithRequest:request delegate:self];
-    NSLog(@"TimeOut:%g", [request timeoutInterval]);
     if (conn != nil) {
         do {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -211,8 +217,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     if (self.failedHandler) {
         self.failedHandler(error);
     }
-    [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
-    [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
+    [self finish];
 }
 
 // 通信終了
@@ -223,6 +228,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
         responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
     }
     self.completionHandler(_responseHeader, responseString);
+    [self finish];
+}
+
+- (void)finish
+{
     [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
     [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
 }

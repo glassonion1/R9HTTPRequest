@@ -26,6 +26,27 @@ static BOOL isRun = NO;
     [super tearDown];
 }
 
+- (void)testIsRunOnMainThread
+{
+    isRun = NO;
+    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
+    request.runOnMainThread = YES;
+    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+        STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
+    }];
+    [request startRequest];
+}
+
+- (void)testIsRunOnThread
+{
+    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
+    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
+        STAssertTrue([[NSThread currentThread] isMainThread] == NO, @"");
+        isRun = NO;
+    }];
+    [request startRequest];
+}
+
 - (void)testGETRequest
 {
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
@@ -40,6 +61,7 @@ static BOOL isRun = NO;
 
 - (void)test404NotFound
 {
+    NSLog(@"%d", [[NSThread currentThread] isMainThread]);
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com/jpkjijbhb"]];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         STAssertTrue(responseHeader.statusCode == 404, @"");
