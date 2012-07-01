@@ -28,27 +28,6 @@
     [super tearDown];
 }
 
-- (void)testIsRunOnMainThread
-{
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
-    request.runOnMainThread = YES;
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
-        _isFinished = YES;
-    }];
-    [request startRequest];
-}
-
-- (void)testIsRunOnThread
-{
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        STAssertTrue([[NSThread currentThread] isMainThread] == NO, @"");
-        _isFinished = YES;
-    }];
-    [request startRequest];
-}
-
 - (void)testGETRequest
 {
     NSLog(@"isMainThread:%d", [[NSThread currentThread] isMainThread]);
