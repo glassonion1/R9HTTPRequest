@@ -10,30 +10,39 @@
 #import "R9HTTPRequest.h"
 #import "R9HTTPWSSERequest.h"
 
-static BOOL isRun = NO;
-
-@implementation R9HTTPRequestTests
+@implementation R9HTTPRequestTests {
+    BOOL _isFinished;
+}
 
 - (void)setUp
 {
     [super setUp];
-    isRun = YES;
+    _isFinished = NO;
 }
 
 - (void)tearDown
 {
-    while (isRun) {}
+    do {
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:1.0]];
+    } while (!_isFinished);
     [super tearDown];
 }
 
 - (void)testGETRequest
 {
+    NSLog(@"isMainThread:%d", [[NSThread currentThread] isMainThread]);
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com"]];
     [request setTimeoutInterval:360];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"%@", error);
+        STFail(@"Fail");
+        _isFinished = YES;
+    }];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
+        STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
         STAssertTrue(responseHeader.statusCode == 200, @"");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request startRequest];
 }
@@ -41,9 +50,14 @@ static BOOL isRun = NO;
 - (void)test404NotFound
 {
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.apple.com/jpkjijbhb"]];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"%@", error);
+        STFail(@"Fail");
+        _isFinished = YES;
+    }];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         STAssertTrue(responseHeader.statusCode == 404, @"");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request startRequest];
 }
@@ -53,41 +67,16 @@ static BOOL isRun = NO;
     R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://fdsfsdfsdfsd.co/"]];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         STFail(@"Fail");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request setFailedHandler:^(NSError *error){
         NSLog(@"%@", error);
+        STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
         STAssertTrue(YES, @"");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request startRequest];
 }
-
-- (void)testShouldRedirectYes
-{
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://jigsaw.w3.org/HTTP/300/301.html"]];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        NSLog(@"%@", responseString);
-        STAssertTrue(responseHeader.statusCode == 200, @"");
-        isRun = NO;
-    }];
-    [request startRequest];
-}
-
-/* 単体でしかテストが通らない
-- (void)testShouldRedirectNo
-{
-    
-    R9HTTPRequest *request = [[R9HTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://jigsaw.w3.org/HTTP/300/301.html"]];
-    request.shouldRedirect = NO;
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        NSLog(@"%@", responseString);
-        STAssertTrue(responseHeader.statusCode == 301, @"");
-        isRun = NO;
-    }];
-    [request startRequest];
-}
-*/
 
 - (void)testPOSTRequest
 {
@@ -96,10 +85,15 @@ static BOOL isRun = NO;
     [request setTimeoutInterval:360];
     [request setHTTPMethod:@"POST"];
     [request addBody:@"test" forKey:@"TestKey"];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"%@", error);
+        STFail(@"Fail");
+        _isFinished = YES;
+    }];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request startRequest];
 }
@@ -117,10 +111,15 @@ static BOOL isRun = NO;
         STFail(@"Fail to create image.");
     }
     [request setData:pngData withFileName:@"sample.png" andContentType:@"image/png" forKey:@"file"];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"%@", error);
+        STFail(@"Fail");
+        _isFinished = YES;
+    }];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request startRequest];
 }
@@ -139,28 +138,19 @@ static BOOL isRun = NO;
         STFail(@"Fail to create image.");
     }
     [request setData:jpgData withFileName:@"sample.jpg" andContentType:@"image/jpg" forKey:@"file"];
+    [request setFailedHandler:^(NSError *error){
+        NSLog(@"%@", error);
+        STFail(@"Fail");
+        _isFinished = YES;
+    }];
     [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
         NSLog(@"%@", responseString);
         STAssertTrue(responseHeader.statusCode == 200, @"");
-        isRun = NO;
+        _isFinished = YES;
     }];
     [request setUploadProgressHandler:^(float newProgress){
+        STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
         NSLog(@"%g", newProgress);
-    }];
-    [request startRequest];
-}
-
-- (void)testWSSERequest 
-{
-    R9HTTPWSSERequest *request = [[R9HTTPWSSERequest alloc] initWithURL:[NSURL URLWithString:@"http://d.hatena.ne.jp/{hatenaID}/atom/draft"] andUserId:@"hatenaID" andPassword:@"password"];
-    [request setCompletionHandler:^(NSHTTPURLResponse *responseHeader, NSString *responseString){
-        NSLog(@"%@", responseString);
-        STAssertTrue(responseHeader.statusCode == 200, @"");
-        isRun = NO;
-    }];
-    [request setFailedHandler:^(NSError *error) {
-        STFail(@"%@", error);
-        isRun = NO;
     }];
     [request startRequest];
 }

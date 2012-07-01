@@ -23,6 +23,8 @@
 		6E63E27B15003C9E0089672E /* NSString+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27415003C9E0089672E /* NSString+Crypto.m */; };
 		6E63E27C15003C9E0089672E /* R9HTTPWSSERequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27615003C9E0089672E /* R9HTTPWSSERequest.m */; };
 		6E63E27D15003C9E0089672E /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27815003C9E0089672E /* R9HTTPRequest.m */; };
+		6EB9EF6115A09EB700036FEE /* R9HTTPRequestRedirectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9EF6015A09EB700036FEE /* R9HTTPRequestRedirectTest.m */; };
+		6EB9EF6515A09F5C00036FEE /* R9HTTPWSSERequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9EF6415A09F5C00036FEE /* R9HTTPWSSERequestTest.m */; };
 		9685FE421500938B00FC255F /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 9685FE411500938B00FC255F /* sync.png */; };
 		9685FE4915009BDC00FC255F /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9685FE4815009BDC00FC255F /* sample.jpg */; };
 /* End PBXBuildFile section */
@@ -64,6 +66,10 @@
 		6E63E27615003C9E0089672E /* R9HTTPWSSERequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPWSSERequest.m; sourceTree = "<group>"; };
 		6E63E27715003C9E0089672E /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequest.h; sourceTree = "<group>"; };
 		6E63E27815003C9E0089672E /* R9HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequest.m; sourceTree = "<group>"; };
+		6EB9EF5F15A09EB700036FEE /* R9HTTPRequestRedirectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequestRedirectTest.h; sourceTree = "<group>"; };
+		6EB9EF6015A09EB700036FEE /* R9HTTPRequestRedirectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequestRedirectTest.m; sourceTree = "<group>"; };
+		6EB9EF6315A09F5B00036FEE /* R9HTTPWSSERequestTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPWSSERequestTest.h; sourceTree = "<group>"; };
+		6EB9EF6415A09F5C00036FEE /* R9HTTPWSSERequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPWSSERequestTest.m; sourceTree = "<group>"; };
 		9685FE411500938B00FC255F /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
 		9685FE4815009BDC00FC255F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +157,10 @@
 			children = (
 				6E63E25F15003B5D0089672E /* R9HTTPRequestTests.h */,
 				6E63E26015003B5D0089672E /* R9HTTPRequestTests.m */,
+				6EB9EF6315A09F5B00036FEE /* R9HTTPWSSERequestTest.h */,
+				6EB9EF6415A09F5C00036FEE /* R9HTTPWSSERequestTest.m */,
+				6EB9EF5F15A09EB700036FEE /* R9HTTPRequestRedirectTest.h */,
+				6EB9EF6015A09EB700036FEE /* R9HTTPRequestRedirectTest.m */,
 				6E63E25A15003B5D0089672E /* Supporting Files */,
 			);
 			path = R9HTTPRequestTests;
@@ -306,6 +316,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E63E26115003B5D0089672E /* R9HTTPRequestTests.m in Sources */,
+				6EB9EF6115A09EB700036FEE /* R9HTTPRequestRedirectTest.m in Sources */,
+				6EB9EF6515A09F5C00036FEE /* R9HTTPWSSERequestTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

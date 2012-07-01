@@ -98,7 +98,6 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
         [request setTimeoutInterval:_timeoutSeconds];
     }
     NSURLConnection *conn = [NSURLConnection connectionWithRequest:request delegate:self];
-    NSLog(@"TimeOut:%g", [request timeoutInterval]);
     if (conn != nil) {
         do {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
@@ -201,16 +200,22 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     if (self.uploadProgressHandler) {
         float progress = [[NSNumber numberWithInteger:totalBytesWritten] floatValue];
         float total = [[NSNumber numberWithInteger: totalBytesExpectedToWrite] floatValue];
-        self.uploadProgressHandler(progress / total);
+        NSOperationQueue *queue = [NSOperationQueue mainQueue];
+        [queue addOperationWithBlock:^{
+            self.uploadProgressHandler(progress / total);
+        }];
     }
 }
 
 // 通信エラー
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    if (self.failedHandler) {
-        self.failedHandler(error);
-    }
+    [self setCompletionBlock:^{
+        NSOperationQueue *queue = [NSOperationQueue mainQueue];
+        [queue addOperationWithBlock:^{
+            self.failedHandler(error);
+        }];
+    }];
     [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
     [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
 }
@@ -218,11 +223,20 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 // 通信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSString *responseString = nil;
-    if (_responseData) {
-        responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
-    }
-    self.completionHandler(_responseHeader, responseString);
+    __weak NSData *responseData = _responseData;
+    __weak NSHTTPURLResponse *responseHeader = _responseHeader;
+    [self setCompletionBlock:^{
+        // Run on main thread.
+        NSOperationQueue *queue = [NSOperationQueue mainQueue];
+        [queue addOperationWithBlock:^{
+            NSString *responseString = nil;
+            if (responseData) {
+                responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+            }
+            //NSLog(@"is main thread:%d", [[NSThread currentThread] isMainThread]);
+            self.completionHandler(responseHeader, responseString);
+        }];
+    }];
     [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
     [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
 }
