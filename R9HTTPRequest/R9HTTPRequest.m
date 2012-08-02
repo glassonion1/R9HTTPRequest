@@ -37,7 +37,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString*)key
 {
-    if ([key isEqualToString:@"isExecuting"] || 
+    if ([key isEqualToString:@"isExecuting"] ||
         [key isEqualToString:@"isFinished"]) {
         return YES;
     }
@@ -70,7 +70,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
         _fileInfo = [[NSMutableDictionary alloc] init];
         _shouldRedirect = YES;
         _HTTPMethod = @"GET";
-    }  
+    }
     return self;
 }
 
@@ -170,12 +170,12 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 #pragma mark - NSURLConnectionDelegate and NSURLConnectionDataDelegate methods
 
 // リダイレクトの処理
-- (NSURLRequest *)connection:(NSURLConnection *)connection 
+- (NSURLRequest *)connection:(NSURLConnection *)connection
              willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response
 {
     if (response && self.shouldRedirect == NO) {
         return nil;
-    } 
+    }
     return request;
 }
 
@@ -236,6 +236,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
             //NSLog(@"is main thread:%d", [[NSThread currentThread] isMainThread]);
             self.completionHandler(responseHeader, responseString);
         }];
+
+        // メモリリーク対策 by @hisasann
+        _headers = nil;
+        _bodies = nil;
+        _fileInfo = nil;
     }];
     [self finish];
 }
