@@ -93,10 +93,12 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     return self;
 }
 
+/*
 - (void)dealloc
 {
-    //NSLog(@"%@#%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+    NSLog(@"%@#%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 }
+*/
 
 - (void)startRequest
 {
