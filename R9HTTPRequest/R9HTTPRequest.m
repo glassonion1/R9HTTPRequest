@@ -183,7 +183,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
             [content appendString:@"&"];
         }
         if (![key isEqualToString:@""]) {
-            [content appendFormat:[NSString stringWithFormat:@"%@=%@", key, obj]];
+            [content appendFormat:@"%@=%@", key, obj];
         } else {
             [content appendString:obj];
         }
