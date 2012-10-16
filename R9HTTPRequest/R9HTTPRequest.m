@@ -9,7 +9,11 @@
 
 static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
-@interface R9HTTPRequest(private)
+@interface R9HTTPRequest()
+
+@property (nonatomic) NSMutableDictionary *headers;
+@property (nonatomic) NSMutableDictionary *bodies;
+@property (nonatomic) NSMutableDictionary *fileInfo;
 
 - (NSData *)createMultipartBodyData;
 - (NSData *)createBodyData;
@@ -22,18 +26,12 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     NSTimeInterval _timeoutSeconds;
     NSHTTPURLResponse *_responseHeader;
     NSMutableData *_responseData;
+    NSOperationQueue *_queue;
     NSMutableDictionary *_headers;
     NSMutableDictionary *_bodies;
     NSMutableDictionary *_fileInfo;
-    NSOperationQueue *_queue;
     BOOL _isExecuting, _isFinished;
 }
-
-@synthesize completionHandler = _completionHandler;
-@synthesize uploadProgressHandler = _uploadProgressHandler;
-@synthesize failedHandler = _failedHandler;
-@synthesize HTTPMethod = _HTTPMethod;
-@synthesize shouldRedirect = _shouldRedirect;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(NSString*)key
 {
@@ -59,19 +57,45 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     return _isFinished;
 }
 
+- (NSDictionary *)headers
+{
+    if (!_headers) {
+        _headers = [[NSMutableDictionary alloc] init];
+    }
+    return _headers;
+}
+
+- (NSDictionary *)bodies
+{
+    if (!_bodies) {
+        _bodies = [[NSMutableDictionary alloc] init];
+    }
+    return _bodies;
+}
+
+- (NSDictionary *)fileInfo
+{
+    if (!_fileInfo) {
+        _fileInfo = [[NSMutableDictionary alloc] init];
+    }
+    return _fileInfo;
+}
+
 - (id)initWithURL:(NSURL *)targetUrl
 {
     self = [super init];
     if (self) {
         _url = targetUrl;
         _timeoutSeconds = 0;
-        _headers = [[NSMutableDictionary alloc] init];
-        _bodies = [[NSMutableDictionary alloc] init];
-        _fileInfo = [[NSMutableDictionary alloc] init];
         _shouldRedirect = YES;
         _HTTPMethod = @"GET";
     }
     return self;
+}
+
+- (void)dealloc
+{
+    //NSLog(@"%@#%@", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
 }
 
 - (void)startRequest
@@ -84,11 +108,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 {
     [self setValue:[NSNumber numberWithBool:YES] forKey:@"isExecuting"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_url];
-    if ([_headers count] > 0) {
-        [request setAllHTTPHeaderFields:_headers];
+    if ([self.headers count] > 0) {
+        [request setAllHTTPHeaderFields:self.headers];
     }
     [request setHTTPMethod:self.HTTPMethod];
-    if ([_fileInfo count] > 0) {
+    if ([self.fileInfo count] > 0) {
         NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:[self createMultipartBodyData]];
@@ -114,20 +138,20 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 - (void)addHeader:(NSString *)value forKey:(NSString *)key
 {
-    [_headers setObject:value forKey:key];
+    [self.headers setObject:value forKey:key];
 }
 
 - (void)addBody:(NSString *)value forKey:(NSString *)key
 {
-    [_bodies setObject:value forKey:key];
+    [self.bodies setObject:value forKey:key];
 }
 
 - (void)setData:(NSData *)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key
 {
-	[_fileInfo setValue:key forKey:@"key"];
-	[_fileInfo setValue:fileName forKey:@"fileName"];
-	[_fileInfo setValue:contentType forKey:@"contentType"];
-	[_fileInfo setValue:data forKey:@"data"];
+	[self.fileInfo setValue:key forKey:@"key"];
+	[self.fileInfo setValue:fileName forKey:@"fileName"];
+	[self.fileInfo setValue:contentType forKey:@"contentType"];
+	[self.fileInfo setValue:data forKey:@"data"];
 }
 
 #pragma mark - Private methods
@@ -136,17 +160,17 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 {
     NSMutableString *bodyString = [NSMutableString string];
     [bodyString appendFormat:@"--%@\r\n",boundary ];
-    [_bodies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [self.bodies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [bodyString appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key];
         [bodyString appendFormat:@"%@", obj];
         [bodyString appendFormat:@"\r\n--%@\r\n",boundary];
     }];
     [bodyString appendFormat:@"Content-Disposition: form-data; name=\"%@\";"
-                                @" filename=\"%@\"\r\n", [_fileInfo objectForKey:@"key"], [_fileInfo objectForKey:@"fileName"]];
-    [bodyString appendFormat:@"Content-Type: %@\r\n\r\n", [_fileInfo objectForKey:@"contentType"]];
+                                @" filename=\"%@\"\r\n", [self.fileInfo objectForKey:@"key"], [self.fileInfo objectForKey:@"fileName"]];
+    [bodyString appendFormat:@"Content-Type: %@\r\n\r\n", [self.fileInfo objectForKey:@"contentType"]];
     NSMutableData *bodyData = [NSMutableData data];
     [bodyData appendData:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
-    [bodyData appendData:[_fileInfo objectForKey:@"data"]];
+    [bodyData appendData:[self.fileInfo objectForKey:@"data"]];
     [bodyData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
     return bodyData;
 }
@@ -154,7 +178,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 - (NSData *)createBodyData
 {
     NSMutableString *content = [NSMutableString string];
-    [_bodies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [self.bodies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if (![content isEqualToString:@""]) {
             [content appendString:@"&"];
         }
@@ -201,9 +225,10 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     if (self.uploadProgressHandler) {
         float progress = [[NSNumber numberWithInteger:totalBytesWritten] floatValue];
         float total = [[NSNumber numberWithInteger: totalBytesExpectedToWrite] floatValue];
+        __weak R9HTTPRequest *_self = self;
         NSOperationQueue *queue = [NSOperationQueue mainQueue];
         [queue addOperationWithBlock:^{
-            self.uploadProgressHandler(progress / total);
+            _self.uploadProgressHandler(progress / total);
         }];
     }
 }
@@ -211,37 +236,30 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 // 通信エラー
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    [self setCompletionBlock:^{
-        NSOperationQueue *queue = [NSOperationQueue mainQueue];
-        [queue addOperationWithBlock:^{
-            self.failedHandler(error);
-        }];
-    }];
-    [self finish];
+    [self performSelectorOnMainThread:@selector(failed:) withObject:error waitUntilDone:NO];
 }
 
 // 通信終了
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    __weak NSData *responseData = _responseData;
-    __weak NSHTTPURLResponse *responseHeader = _responseHeader;
-    [self setCompletionBlock:^{
-        // Run on main thread.
-        NSOperationQueue *queue = [NSOperationQueue mainQueue];
-        [queue addOperationWithBlock:^{
-            NSString *responseString = nil;
-            if (responseData) {
-                responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-            }
-            //NSLog(@"is main thread:%d", [[NSThread currentThread] isMainThread]);
-            self.completionHandler(responseHeader, responseString);
-        }];
+    // Run on main thread.
+    [self performSelectorOnMainThread:@selector(done) withObject:nil waitUntilDone:NO];
+}
 
-        // メモリリーク対策 by @hisasann
-        _headers = nil;
-        _bodies = nil;
-        _fileInfo = nil;
-    }];
+- (void)failed:(NSError *)error
+{
+    self.failedHandler(error);
+    [self finish];
+}
+
+- (void)done
+{
+    NSString *responseString = nil;
+    if (_responseData) {
+        responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
+    }
+    //NSLog(@"is main thread:%d", [[NSThread currentThread] isMainThread]);
+    self.completionHandler(_responseHeader, responseString);
     [self finish];
 }
 

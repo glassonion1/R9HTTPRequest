@@ -19,6 +19,20 @@
                ReferencedContainer = "container:R9HTTPRequest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6E63E25115003B5D0089672E"
+               BuildableName = "R9HTTPRequestTests.octest"
+               BlueprintName = "R9HTTPRequestTests"
+               ReferencedContainer = "container:R9HTTPRequest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
