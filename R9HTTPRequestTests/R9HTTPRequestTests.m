@@ -151,6 +151,7 @@
     }];
     [request setUploadProgressHandler:^(float newProgress){
         STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
+        STAssertTrue(newProgress > 0.0, @"");
         NSLog(@"%g", newProgress);
     }];
     [request startRequest];

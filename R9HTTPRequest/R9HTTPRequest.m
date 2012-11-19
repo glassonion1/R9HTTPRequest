@@ -7,7 +7,7 @@
 
 #import "R9HTTPRequest.h"
 
-static NSString *boundary = @"----------0xKhTmLbOuNdArY";
+static NSString *kBoundary = @"----------0xKhTmLbOuNdArY";
 
 @interface R9HTTPRequest()
 
@@ -15,8 +15,8 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 @property (nonatomic) NSMutableDictionary *bodies;
 @property (nonatomic) NSMutableDictionary *fileInfo;
 
-- (NSData *)createMultipartBodyData;
 - (NSData *)createBodyData;
+- (NSData *)createMultipartBodyData;
 - (void)finish;
 
 @end
@@ -27,9 +27,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     NSHTTPURLResponse *_responseHeader;
     NSMutableData *_responseData;
     NSOperationQueue *_queue;
-    NSMutableDictionary *_headers;
-    NSMutableDictionary *_bodies;
-    NSMutableDictionary *_fileInfo;
+    NSMutableDictionary *_headers, *_bodies, *_fileInfo;
     BOOL _isExecuting, _isFinished;
 }
 
@@ -86,7 +84,6 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     self = [super init];
     if (self) {
         _url = targetUrl;
-        _timeoutSeconds = 0;
         _shouldRedirect = YES;
         _HTTPMethod = @"GET";
     }
@@ -108,14 +105,14 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 - (void)start
 {
-    [self setValue:[NSNumber numberWithBool:YES] forKey:@"isExecuting"];
+    [self setValue:@(YES) forKey:@"isExecuting"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:_url];
     if ([self.headers count] > 0) {
         [request setAllHTTPHeaderFields:self.headers];
     }
     [request setHTTPMethod:self.HTTPMethod];
     if ([self.fileInfo count] > 0) {
-        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", kBoundary];
         [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
         [request setHTTPBody:[self createMultipartBodyData]];
     } else {
@@ -161,11 +158,11 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 - (NSData *)createMultipartBodyData
 {
     NSMutableString *bodyString = [NSMutableString string];
-    [bodyString appendFormat:@"--%@\r\n",boundary ];
+    [bodyString appendFormat:@"--%@\r\n", kBoundary];
     [self.bodies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [bodyString appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key];
         [bodyString appendFormat:@"%@", obj];
-        [bodyString appendFormat:@"\r\n--%@\r\n",boundary];
+        [bodyString appendFormat:@"\r\n--%@\r\n", kBoundary];
     }];
     [bodyString appendFormat:@"Content-Disposition: form-data; name=\"%@\";"
                                 @" filename=\"%@\"\r\n", [self.fileInfo objectForKey:@"key"], [self.fileInfo objectForKey:@"fileName"]];
@@ -173,7 +170,7 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
     NSMutableData *bodyData = [NSMutableData data];
     [bodyData appendData:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
     [bodyData appendData:[self.fileInfo objectForKey:@"data"]];
-    [bodyData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [bodyData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", kBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     return bodyData;
 }
 
@@ -267,8 +264,8 @@ static NSString *boundary = @"----------0xKhTmLbOuNdArY";
 
 - (void)finish
 {
-    [self setValue:[NSNumber numberWithBool:NO] forKey:@"isExecuting"];
-    [self setValue:[NSNumber numberWithBool:YES] forKey:@"isFinished"];
+    [self setValue:@(NO) forKey:@"isExecuting"];
+    [self setValue:@(YES) forKey:@"isFinished"];
 }
 
 @end
