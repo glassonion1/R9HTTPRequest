@@ -118,9 +118,7 @@ static NSString *kBoundary = @"----------0xKhTmLbOuNdArY";
     } else {
         [request setHTTPBody:[self createBodyData]];
     }
-    if (_timeoutSeconds > 240) {
-        [request setTimeoutInterval:_timeoutSeconds];
-    }
+    [request setTimeoutInterval:_timeoutSeconds];
     NSURLConnection *conn = [NSURLConnection connectionWithRequest:request delegate:self];
     if (conn != nil) {
         do {
@@ -131,7 +129,6 @@ static NSString *kBoundary = @"----------0xKhTmLbOuNdArY";
 
 - (void)setTimeoutInterval:(NSTimeInterval)seconds
 {
-    NSAssert(seconds > 240, @"TimeoutInterval must be greater than 240 seconds.");
     _timeoutSeconds = seconds;
 }
 

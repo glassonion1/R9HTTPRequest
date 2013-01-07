@@ -27,7 +27,6 @@ typedef void(^FailedHandler)(NSError *error);
 
 - (void)setData:(NSData *)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
 
-/* TimeoutInterval must be greater than 240 seconds. */
 - (void)setTimeoutInterval:(NSTimeInterval)seconds;
 
 - (void)startRequest;

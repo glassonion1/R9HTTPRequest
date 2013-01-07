@@ -70,6 +70,7 @@
         STFail(@"Fail");
         _isFinished = YES;
     }];
+    [request setTimeoutInterval:10];
     [request setFailedHandler:^(NSError *error){
         NSLog(@"%@", error);
         STAssertTrue([[NSThread currentThread] isMainThread] == YES, @"");
