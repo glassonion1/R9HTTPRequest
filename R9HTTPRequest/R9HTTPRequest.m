@@ -255,7 +255,13 @@ static NSString *kBoundary = @"----------0xKhTmLbOuNdArY";
         responseString = [[NSString alloc] initWithData:_responseData encoding:NSUTF8StringEncoding];
     }
     //NSLog(@"is main thread:%d", [[NSThread currentThread] isMainThread]);
-    self.completionHandler(_responseHeader, responseString);
+
+	// In the case of response is NSString
+    //self.completionHandler(_responseHeader, responseString);
+
+	// In the case of response is NSData
+    self.completionHandlerWithData(_responseHeader, _responseData);
+
     [self finish];
 }
 
