@@ -257,10 +257,13 @@ static NSString *kBoundary = @"----------0xKhTmLbOuNdArY";
     //NSLog(@"is main thread:%d", [[NSThread currentThread] isMainThread]);
 
 	// In the case of response is NSString
-    //self.completionHandler(_responseHeader, responseString);
-
-	// In the case of response is NSData
-    self.completionHandlerWithData(_responseHeader, _responseData);
+	if( self.completionHandler ) {
+		self.completionHandler(_responseHeader, responseString);
+	}
+	else if( self.completionHandlerWithData ){
+		// In the case of response is NSData
+		self.completionHandlerWithData(_responseHeader, _responseData);
+	}
 
     [self finish];
 }
