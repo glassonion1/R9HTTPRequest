@@ -1,36 +1,19 @@
 //
 //  R9HTTPRequest.h
+//  R9HTTPRequest
 //
-//  Created by 藤田 泰介 on 12/02/25.
-//  Copyright (c) 2012 Revolution 9. All rights reserved.
+//  Created by taisuke fujita on 2017/10/03.
+//  Copyright © 2017年 Revolution9. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-typedef void(^CompletionHandler)(NSHTTPURLResponse *responseHeader, NSString *responseString);
-typedef void(^CompletionHandlerWithData)(NSHTTPURLResponse *responseHeader, NSData *responseData);
-typedef void(^UploadProgressHandler)(float newProgress);
-typedef void(^FailedHandler)(NSError *error);
+//! Project version number for R9HTTPRequest.
+FOUNDATION_EXPORT double R9HTTPRequestVersionNumber;
 
-@interface R9HTTPRequest : NSOperation <NSURLConnectionDataDelegate>
+//! Project version string for R9HTTPRequest.
+FOUNDATION_EXPORT const unsigned char R9HTTPRequestVersionString[];
 
-@property (copy, nonatomic) CompletionHandler completionHandler;
-@property (copy, nonatomic) CompletionHandlerWithData completionHandlerWithData;
-@property (copy, nonatomic) FailedHandler failedHandler;
-@property (copy, nonatomic) UploadProgressHandler uploadProgressHandler;
-@property (strong, nonatomic) NSString *HTTPMethod;
-@property (nonatomic, getter = isShouldRedirect) BOOL shouldRedirect;
+// In this header, you should import all the public headers of your framework using statements like #import <R9HTTPRequest/PublicHeader.h>
 
-- (id)initWithURL:(NSURL *)targetUrl;
 
-- (void)addHeader:(NSString *)value forKey:(NSString *)key;
-
-- (void)addBody:(NSString *)value forKey:(NSString *)key;
-
-- (void)setData:(NSData *)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key;
-
-- (void)setTimeoutInterval:(NSTimeInterval)seconds;
-
-- (void)startRequest;
-
-@end

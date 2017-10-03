@@ -9,3 +9,8 @@ build/*
 *.mode1v3
 *.mode2v3
 *.xcodeproj/xcuserdata/*
+
+Podfile
+Podfile.lock
+Pods
+*.xcworkspace
