@@ -3,7 +3,7 @@
 [![Version](https://img.shields.io/cocoapods/v/R9HTTPRequest.svg?style=flat)](http://cocoapods.org/pods/R9HTTPRequest)
 [![License](https://img.shields.io/cocoapods/l/R9HTTPRequest.svg?style=flat)](http://cocoapods.org/pods/R9HTTPRequest)
 [![Platform](https://img.shields.io/cocoapods/p/R9HTTPRequest.svg?style=flat)](http://cocoapods.org/pods/R9HTTPRequest)
-
+[![Build Status](https://travis-ci.org/glassonion1/R9HTTPRequest.svg?branch=master)](https://travis-ci.org/glassonion1/R9HTTPRequest)
 
 R9HTTPRequest is an easy to use wrapper around the URLSession(a.k.a NSURLSession) API that makes some of the more tedious aspects of communicating with web servers easier.
 It's backed by RxSwift and RxCocoa.

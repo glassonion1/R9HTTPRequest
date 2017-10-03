@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode9
+xcode_workspace: R9HTTPRequest.xcworkspace
+xcode_scheme: R9HTTPRequest
+xcode_sdk: iphonesimulator
