@@ -3,205 +3,157 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E63E23C15003B5C0089672E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E63E23B15003B5C0089672E /* UIKit.framework */; };
-		6E63E23E15003B5C0089672E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E63E23D15003B5C0089672E /* Foundation.framework */; };
-		6E63E24015003B5C0089672E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E63E23F15003B5C0089672E /* CoreGraphics.framework */; };
-		6E63E24615003B5C0089672E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E63E24415003B5C0089672E /* InfoPlist.strings */; };
-		6E63E24815003B5C0089672E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E24715003B5C0089672E /* main.m */; };
-		6E63E24C15003B5C0089672E /* R9AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E24B15003B5C0089672E /* R9AppDelegate.m */; };
-		6E63E25415003B5D0089672E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E63E25315003B5D0089672E /* SenTestingKit.framework */; };
-		6E63E25515003B5D0089672E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E63E23B15003B5C0089672E /* UIKit.framework */; };
-		6E63E25615003B5D0089672E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E63E23D15003B5C0089672E /* Foundation.framework */; };
-		6E63E25E15003B5D0089672E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E63E25C15003B5D0089672E /* InfoPlist.strings */; };
-		6E63E26115003B5D0089672E /* R9HTTPRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E26015003B5D0089672E /* R9HTTPRequestTests.m */; };
-		6E63E27915003C9E0089672E /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27015003C9E0089672E /* NSData+Base64.m */; };
-		6E63E27A15003C9E0089672E /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27215003C9E0089672E /* NSData+Crypto.m */; };
-		6E63E27B15003C9E0089672E /* NSString+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27415003C9E0089672E /* NSString+Crypto.m */; };
-		6E63E27C15003C9E0089672E /* R9HTTPWSSERequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27615003C9E0089672E /* R9HTTPWSSERequest.m */; };
-		6E63E27D15003C9E0089672E /* R9HTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E63E27815003C9E0089672E /* R9HTTPRequest.m */; };
-		6EB9EF6115A09EB700036FEE /* R9HTTPRequestRedirectTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9EF6015A09EB700036FEE /* R9HTTPRequestRedirectTest.m */; };
-		6EB9EF6515A09F5C00036FEE /* R9HTTPWSSERequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9EF6415A09F5C00036FEE /* R9HTTPWSSERequestTest.m */; };
-		9685FE421500938B00FC255F /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 9685FE411500938B00FC255F /* sync.png */; };
-		9685FE4915009BDC00FC255F /* sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9685FE4815009BDC00FC255F /* sample.jpg */; };
+		4716088CF92A2E46FA58C577 /* Pods_R9HTTPRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 508B69A27FB86AC8004572F4 /* Pods_R9HTTPRequest.framework */; };
+		DAACBFD11F832F1B00B4F275 /* R9HTTPRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAACBFC71F832F1B00B4F275 /* R9HTTPRequest.framework */; };
+		DAACBFD61F832F1B00B4F275 /* R9HTTPRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAACBFD51F832F1B00B4F275 /* R9HTTPRequestTests.swift */; };
+		DAACBFD81F832F1B00B4F275 /* R9HTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = DAACBFCA1F832F1B00B4F275 /* R9HTTPRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAACBFE41F83312100B4F275 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAACBFE31F83312100B4F275 /* HTTPClient.swift */; };
+		DAACBFE61F83631C00B4F275 /* HttpJsonClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAACBFE51F83631C00B4F275 /* HttpJsonClient.swift */; };
+		DAACBFE81F8364D800B4F275 /* HttpDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAACBFE71F8364D800B4F275 /* HttpDataClient.swift */; };
+		DAACBFEA1F8369DF00B4F275 /* HttpbinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAACBFE91F8369DF00B4F275 /* HttpbinResponse.swift */; };
+		E1A3B3EF0B4639AEE7086636 /* Pods_R9HTTPRequestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F921C6F259C8F9AC3F8ACC9 /* Pods_R9HTTPRequestTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6E63E25715003B5D0089672E /* PBXContainerItemProxy */ = {
+		DAACBFD21F832F1B00B4F275 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 6E63E22E15003B5C0089672E /* Project object */;
+			containerPortal = DAACBFBE1F832F1B00B4F275 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6E63E23615003B5C0089672E;
+			remoteGlobalIDString = DAACBFC61F832F1B00B4F275;
 			remoteInfo = R9HTTPRequest;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6E63E23715003B5C0089672E /* R9HTTPRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = R9HTTPRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E63E23B15003B5C0089672E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		6E63E23D15003B5C0089672E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		6E63E23F15003B5C0089672E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6E63E24315003B5C0089672E /* R9HTTPRequest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "R9HTTPRequest-Info.plist"; sourceTree = "<group>"; };
-		6E63E24515003B5C0089672E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6E63E24715003B5C0089672E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6E63E24915003B5C0089672E /* R9HTTPRequest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "R9HTTPRequest-Prefix.pch"; sourceTree = "<group>"; };
-		6E63E24A15003B5C0089672E /* R9AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = R9AppDelegate.h; sourceTree = "<group>"; };
-		6E63E24B15003B5C0089672E /* R9AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = R9AppDelegate.m; sourceTree = "<group>"; };
-		6E63E25215003B5D0089672E /* R9HTTPRequestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = R9HTTPRequestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E63E25315003B5D0089672E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		6E63E25B15003B5D0089672E /* R9HTTPRequestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "R9HTTPRequestTests-Info.plist"; sourceTree = "<group>"; };
-		6E63E25D15003B5D0089672E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6E63E25F15003B5D0089672E /* R9HTTPRequestTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequestTests.h; sourceTree = "<group>"; };
-		6E63E26015003B5D0089672E /* R9HTTPRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequestTests.m; sourceTree = "<group>"; };
-		6E63E26F15003C9E0089672E /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		6E63E27015003C9E0089672E /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
-		6E63E27115003C9E0089672E /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
-		6E63E27215003C9E0089672E /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
-		6E63E27315003C9E0089672E /* NSString+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Crypto.h"; sourceTree = "<group>"; };
-		6E63E27415003C9E0089672E /* NSString+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Crypto.m"; sourceTree = "<group>"; };
-		6E63E27515003C9E0089672E /* R9HTTPWSSERequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPWSSERequest.h; sourceTree = "<group>"; };
-		6E63E27615003C9E0089672E /* R9HTTPWSSERequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPWSSERequest.m; sourceTree = "<group>"; };
-		6E63E27715003C9E0089672E /* R9HTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequest.h; sourceTree = "<group>"; };
-		6E63E27815003C9E0089672E /* R9HTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequest.m; sourceTree = "<group>"; };
-		6EB9EF5F15A09EB700036FEE /* R9HTTPRequestRedirectTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequestRedirectTest.h; sourceTree = "<group>"; };
-		6EB9EF6015A09EB700036FEE /* R9HTTPRequestRedirectTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPRequestRedirectTest.m; sourceTree = "<group>"; };
-		6EB9EF6315A09F5B00036FEE /* R9HTTPWSSERequestTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R9HTTPWSSERequestTest.h; sourceTree = "<group>"; };
-		6EB9EF6415A09F5C00036FEE /* R9HTTPWSSERequestTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R9HTTPWSSERequestTest.m; sourceTree = "<group>"; };
-		9685FE411500938B00FC255F /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
-		9685FE4815009BDC00FC255F /* sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample.jpg; sourceTree = "<group>"; };
+		1F921C6F259C8F9AC3F8ACC9 /* Pods_R9HTTPRequestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R9HTTPRequestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4262D436890A3823A01B4D0E /* Pods-R9HTTPRequestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R9HTTPRequestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-R9HTTPRequestTests/Pods-R9HTTPRequestTests.debug.xcconfig"; sourceTree = "<group>"; };
+		508B69A27FB86AC8004572F4 /* Pods_R9HTTPRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R9HTTPRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		77F0207A298B2127E9281D5F /* Pods-R9HTTPRequest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R9HTTPRequest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-R9HTTPRequest/Pods-R9HTTPRequest.debug.xcconfig"; sourceTree = "<group>"; };
+		7F8E6B3192C5CC820D3319D4 /* Pods-R9HTTPRequestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R9HTTPRequestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-R9HTTPRequestTests/Pods-R9HTTPRequestTests.release.xcconfig"; sourceTree = "<group>"; };
+		D670887EA37A2A7FC63992AD /* Pods-R9HTTPRequest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R9HTTPRequest.release.xcconfig"; path = "Pods/Target Support Files/Pods-R9HTTPRequest/Pods-R9HTTPRequest.release.xcconfig"; sourceTree = "<group>"; };
+		DAACBFC71F832F1B00B4F275 /* R9HTTPRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = R9HTTPRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAACBFCA1F832F1B00B4F275 /* R9HTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = R9HTTPRequest.h; sourceTree = "<group>"; };
+		DAACBFCB1F832F1B00B4F275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAACBFD01F832F1B00B4F275 /* R9HTTPRequestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = R9HTTPRequestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAACBFD51F832F1B00B4F275 /* R9HTTPRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R9HTTPRequestTests.swift; sourceTree = "<group>"; };
+		DAACBFD71F832F1B00B4F275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAACBFE31F83312100B4F275 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		DAACBFE51F83631C00B4F275 /* HttpJsonClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpJsonClient.swift; sourceTree = "<group>"; };
+		DAACBFE71F8364D800B4F275 /* HttpDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpDataClient.swift; sourceTree = "<group>"; };
+		DAACBFE91F8369DF00B4F275 /* HttpbinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpbinResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6E63E23415003B5C0089672E /* Frameworks */ = {
+		DAACBFC31F832F1B00B4F275 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E63E23C15003B5C0089672E /* UIKit.framework in Frameworks */,
-				6E63E23E15003B5C0089672E /* Foundation.framework in Frameworks */,
-				6E63E24015003B5C0089672E /* CoreGraphics.framework in Frameworks */,
+				4716088CF92A2E46FA58C577 /* Pods_R9HTTPRequest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E63E24E15003B5D0089672E /* Frameworks */ = {
+		DAACBFCD1F832F1B00B4F275 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E63E25415003B5D0089672E /* SenTestingKit.framework in Frameworks */,
-				6E63E25515003B5D0089672E /* UIKit.framework in Frameworks */,
-				6E63E25615003B5D0089672E /* Foundation.framework in Frameworks */,
+				DAACBFD11F832F1B00B4F275 /* R9HTTPRequest.framework in Frameworks */,
+				E1A3B3EF0B4639AEE7086636 /* Pods_R9HTTPRequestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E63E22C15003B5C0089672E = {
+		54CF11BD490ECCD57B3B6532 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6E63E24115003B5C0089672E /* R9HTTPRequest */,
-				6E63E25915003B5D0089672E /* R9HTTPRequestTests */,
-				6E63E23A15003B5C0089672E /* Frameworks */,
-				6E63E23815003B5C0089672E /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		6E63E23815003B5C0089672E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6E63E23715003B5C0089672E /* R9HTTPRequest.app */,
-				6E63E25215003B5D0089672E /* R9HTTPRequestTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6E63E23A15003B5C0089672E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6E63E23B15003B5C0089672E /* UIKit.framework */,
-				6E63E23D15003B5C0089672E /* Foundation.framework */,
-				6E63E23F15003B5C0089672E /* CoreGraphics.framework */,
-				6E63E25315003B5D0089672E /* SenTestingKit.framework */,
+				508B69A27FB86AC8004572F4 /* Pods_R9HTTPRequest.framework */,
+				1F921C6F259C8F9AC3F8ACC9 /* Pods_R9HTTPRequestTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6E63E24115003B5C0089672E /* R9HTTPRequest */ = {
+		DAACBFBD1F832F1B00B4F275 = {
 			isa = PBXGroup;
 			children = (
-				6E63E26E15003C9E0089672E /* Extensions */,
-				6E63E27715003C9E0089672E /* R9HTTPRequest.h */,
-				6E63E27815003C9E0089672E /* R9HTTPRequest.m */,
-				6E63E24A15003B5C0089672E /* R9AppDelegate.h */,
-				6E63E24B15003B5C0089672E /* R9AppDelegate.m */,
-				6E63E24215003B5C0089672E /* Supporting Files */,
+				DAACBFC91F832F1B00B4F275 /* R9HTTPRequest */,
+				DAACBFD41F832F1B00B4F275 /* R9HTTPRequestTests */,
+				DAACBFC81F832F1B00B4F275 /* Products */,
+				E25B99DC596417A384BF41C1 /* Pods */,
+				54CF11BD490ECCD57B3B6532 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		DAACBFC81F832F1B00B4F275 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAACBFC71F832F1B00B4F275 /* R9HTTPRequest.framework */,
+				DAACBFD01F832F1B00B4F275 /* R9HTTPRequestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAACBFC91F832F1B00B4F275 /* R9HTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				DAACBFCA1F832F1B00B4F275 /* R9HTTPRequest.h */,
+				DAACBFCB1F832F1B00B4F275 /* Info.plist */,
+				DAACBFE31F83312100B4F275 /* HTTPClient.swift */,
+				DAACBFE51F83631C00B4F275 /* HttpJsonClient.swift */,
+				DAACBFE71F8364D800B4F275 /* HttpDataClient.swift */,
 			);
 			path = R9HTTPRequest;
 			sourceTree = "<group>";
 		};
-		6E63E24215003B5C0089672E /* Supporting Files */ = {
+		DAACBFD41F832F1B00B4F275 /* R9HTTPRequestTests */ = {
 			isa = PBXGroup;
 			children = (
-				6E63E24315003B5C0089672E /* R9HTTPRequest-Info.plist */,
-				6E63E24415003B5C0089672E /* InfoPlist.strings */,
-				6E63E24715003B5C0089672E /* main.m */,
-				6E63E24915003B5C0089672E /* R9HTTPRequest-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6E63E25915003B5D0089672E /* R9HTTPRequestTests */ = {
-			isa = PBXGroup;
-			children = (
-				6E63E25F15003B5D0089672E /* R9HTTPRequestTests.h */,
-				6E63E26015003B5D0089672E /* R9HTTPRequestTests.m */,
-				6EB9EF6315A09F5B00036FEE /* R9HTTPWSSERequestTest.h */,
-				6EB9EF6415A09F5C00036FEE /* R9HTTPWSSERequestTest.m */,
-				6EB9EF5F15A09EB700036FEE /* R9HTTPRequestRedirectTest.h */,
-				6EB9EF6015A09EB700036FEE /* R9HTTPRequestRedirectTest.m */,
-				6E63E25A15003B5D0089672E /* Supporting Files */,
+				DAACBFD51F832F1B00B4F275 /* R9HTTPRequestTests.swift */,
+				DAACBFD71F832F1B00B4F275 /* Info.plist */,
+				DAACBFE91F8369DF00B4F275 /* HttpbinResponse.swift */,
 			);
 			path = R9HTTPRequestTests;
 			sourceTree = "<group>";
 		};
-		6E63E25A15003B5D0089672E /* Supporting Files */ = {
+		E25B99DC596417A384BF41C1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9685FE4815009BDC00FC255F /* sample.jpg */,
-				9685FE411500938B00FC255F /* sync.png */,
-				6E63E25B15003B5D0089672E /* R9HTTPRequestTests-Info.plist */,
-				6E63E25C15003B5D0089672E /* InfoPlist.strings */,
+				77F0207A298B2127E9281D5F /* Pods-R9HTTPRequest.debug.xcconfig */,
+				D670887EA37A2A7FC63992AD /* Pods-R9HTTPRequest.release.xcconfig */,
+				4262D436890A3823A01B4D0E /* Pods-R9HTTPRequestTests.debug.xcconfig */,
+				7F8E6B3192C5CC820D3319D4 /* Pods-R9HTTPRequestTests.release.xcconfig */,
 			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		6E63E26E15003C9E0089672E /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				6E63E26F15003C9E0089672E /* NSData+Base64.h */,
-				6E63E27015003C9E0089672E /* NSData+Base64.m */,
-				6E63E27115003C9E0089672E /* NSData+Crypto.h */,
-				6E63E27215003C9E0089672E /* NSData+Crypto.m */,
-				6E63E27315003C9E0089672E /* NSString+Crypto.h */,
-				6E63E27415003C9E0089672E /* NSString+Crypto.m */,
-				6E63E27515003C9E0089672E /* R9HTTPWSSERequest.h */,
-				6E63E27615003C9E0089672E /* R9HTTPWSSERequest.m */,
-			);
-			path = Extensions;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		DAACBFC41F832F1B00B4F275 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAACBFD81F832F1B00B4F275 /* R9HTTPRequest.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		6E63E23615003B5C0089672E /* R9HTTPRequest */ = {
+		DAACBFC61F832F1B00B4F275 /* R9HTTPRequest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E63E26415003B5D0089672E /* Build configuration list for PBXNativeTarget "R9HTTPRequest" */;
+			buildConfigurationList = DAACBFDB1F832F1B00B4F275 /* Build configuration list for PBXNativeTarget "R9HTTPRequest" */;
 			buildPhases = (
-				6E63E23315003B5C0089672E /* Sources */,
-				6E63E23415003B5C0089672E /* Frameworks */,
-				6E63E23515003B5C0089672E /* Resources */,
+				3CBEB8D44FCA27148E4ED583 /* [CP] Check Pods Manifest.lock */,
+				DAACBFC21F832F1B00B4F275 /* Sources */,
+				DAACBFC31F832F1B00B4F275 /* Frameworks */,
+				DAACBFC41F832F1B00B4F275 /* Headers */,
+				DAACBFC51F832F1B00B4F275 /* Resources */,
+				52E1C37A62C8EE153FD1EDC0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,282 +161,429 @@
 			);
 			name = R9HTTPRequest;
 			productName = R9HTTPRequest;
-			productReference = 6E63E23715003B5C0089672E /* R9HTTPRequest.app */;
-			productType = "com.apple.product-type.application";
+			productReference = DAACBFC71F832F1B00B4F275 /* R9HTTPRequest.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		6E63E25115003B5D0089672E /* R9HTTPRequestTests */ = {
+		DAACBFCF1F832F1B00B4F275 /* R9HTTPRequestTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E63E26715003B5D0089672E /* Build configuration list for PBXNativeTarget "R9HTTPRequestTests" */;
+			buildConfigurationList = DAACBFDE1F832F1B00B4F275 /* Build configuration list for PBXNativeTarget "R9HTTPRequestTests" */;
 			buildPhases = (
-				6E63E24D15003B5D0089672E /* Sources */,
-				6E63E24E15003B5D0089672E /* Frameworks */,
-				6E63E24F15003B5D0089672E /* Resources */,
-				6E63E25015003B5D0089672E /* ShellScript */,
+				A21F871CFB97D53B2614A437 /* [CP] Check Pods Manifest.lock */,
+				DAACBFCC1F832F1B00B4F275 /* Sources */,
+				DAACBFCD1F832F1B00B4F275 /* Frameworks */,
+				DAACBFCE1F832F1B00B4F275 /* Resources */,
+				15F3054CEB79E4C8E64B263F /* [CP] Embed Pods Frameworks */,
+				36884FAD9496C878BF4C18C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6E63E25815003B5D0089672E /* PBXTargetDependency */,
+				DAACBFD31F832F1B00B4F275 /* PBXTargetDependency */,
 			);
 			name = R9HTTPRequestTests;
 			productName = R9HTTPRequestTests;
-			productReference = 6E63E25215003B5D0089672E /* R9HTTPRequestTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = DAACBFD01F832F1B00B4F275 /* R9HTTPRequestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6E63E22E15003B5C0089672E /* Project object */ = {
+		DAACBFBE1F832F1B00B4F275 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = R9;
-				LastUpgradeCheck = 0430;
-				ORGANIZATIONNAME = "Revolution 9";
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Revolution9;
+				TargetAttributes = {
+					DAACBFC61F832F1B00B4F275 = {
+						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					DAACBFCF1F832F1B00B4F275 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
-			buildConfigurationList = 6E63E23115003B5C0089672E /* Build configuration list for PBXProject "R9HTTPRequest" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			buildConfigurationList = DAACBFC11F832F1B00B4F275 /* Build configuration list for PBXProject "R9HTTPRequest" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 6E63E22C15003B5C0089672E;
-			productRefGroup = 6E63E23815003B5C0089672E /* Products */;
+			mainGroup = DAACBFBD1F832F1B00B4F275;
+			productRefGroup = DAACBFC81F832F1B00B4F275 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6E63E23615003B5C0089672E /* R9HTTPRequest */,
-				6E63E25115003B5D0089672E /* R9HTTPRequestTests */,
+				DAACBFC61F832F1B00B4F275 /* R9HTTPRequest */,
+				DAACBFCF1F832F1B00B4F275 /* R9HTTPRequestTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6E63E23515003B5C0089672E /* Resources */ = {
+		DAACBFC51F832F1B00B4F275 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E63E24615003B5C0089672E /* InfoPlist.strings in Resources */,
-				9685FE421500938B00FC255F /* sync.png in Resources */,
-				9685FE4915009BDC00FC255F /* sample.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E63E24F15003B5D0089672E /* Resources */ = {
+		DAACBFCE1F832F1B00B4F275 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E63E25E15003B5D0089672E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6E63E25015003B5D0089672E /* ShellScript */ = {
+		15F3054CEB79E4C8E64B263F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-R9HTTPRequestTests/Pods-R9HTTPRequestTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-R9HTTPRequestTests/Pods-R9HTTPRequestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		36884FAD9496C878BF4C18C3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-R9HTTPRequestTests/Pods-R9HTTPRequestTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3CBEB8D44FCA27148E4ED583 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-R9HTTPRequest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52E1C37A62C8EE153FD1EDC0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-R9HTTPRequest/Pods-R9HTTPRequest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A21F871CFB97D53B2614A437 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-R9HTTPRequestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6E63E23315003B5C0089672E /* Sources */ = {
+		DAACBFC21F832F1B00B4F275 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E63E24815003B5C0089672E /* main.m in Sources */,
-				6E63E24C15003B5C0089672E /* R9AppDelegate.m in Sources */,
-				6E63E27915003C9E0089672E /* NSData+Base64.m in Sources */,
-				6E63E27A15003C9E0089672E /* NSData+Crypto.m in Sources */,
-				6E63E27B15003C9E0089672E /* NSString+Crypto.m in Sources */,
-				6E63E27C15003C9E0089672E /* R9HTTPWSSERequest.m in Sources */,
-				6E63E27D15003C9E0089672E /* R9HTTPRequest.m in Sources */,
+				DAACBFE61F83631C00B4F275 /* HttpJsonClient.swift in Sources */,
+				DAACBFE41F83312100B4F275 /* HTTPClient.swift in Sources */,
+				DAACBFE81F8364D800B4F275 /* HttpDataClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E63E24D15003B5D0089672E /* Sources */ = {
+		DAACBFCC1F832F1B00B4F275 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E63E26115003B5D0089672E /* R9HTTPRequestTests.m in Sources */,
-				6EB9EF6115A09EB700036FEE /* R9HTTPRequestRedirectTest.m in Sources */,
-				6EB9EF6515A09F5C00036FEE /* R9HTTPWSSERequestTest.m in Sources */,
+				DAACBFEA1F8369DF00B4F275 /* HttpbinResponse.swift in Sources */,
+				DAACBFD61F832F1B00B4F275 /* R9HTTPRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6E63E25815003B5D0089672E /* PBXTargetDependency */ = {
+		DAACBFD31F832F1B00B4F275 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6E63E23615003B5C0089672E /* R9HTTPRequest */;
-			targetProxy = 6E63E25715003B5D0089672E /* PBXContainerItemProxy */;
+			target = DAACBFC61F832F1B00B4F275 /* R9HTTPRequest */;
+			targetProxy = DAACBFD21F832F1B00B4F275 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		6E63E24415003B5C0089672E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6E63E24515003B5C0089672E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		6E63E25C15003B5D0089672E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6E63E25D15003B5D0089672E /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		6E63E26215003B5D0089672E /* Debug */ = {
+		DAACBFD91F832F1B00B4F275 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		6E63E26315003B5D0089672E /* Release */ = {
+		DAACBFDA1F832F1B00B4F275 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		6E63E26515003B5D0089672E /* Debug */ = {
+		DAACBFDC1F832F1B00B4F275 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77F0207A298B2127E9281D5F /* Pods-R9HTTPRequest.debug.xcconfig */;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "R9HTTPRequest/R9HTTPRequest-Prefix.pch";
-				INFOPLIST_FILE = "R9HTTPRequest/R9HTTPRequest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = R9HTTPRequest/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9revolution9.R9HTTPRequest;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6E63E26615003B5D0089672E /* Release */ = {
+		DAACBFDD1F832F1B00B4F275 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D670887EA37A2A7FC63992AD /* Pods-R9HTTPRequest.release.xcconfig */;
 			buildSettings = {
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "R9HTTPRequest/R9HTTPRequest-Prefix.pch";
-				INFOPLIST_FILE = "R9HTTPRequest/R9HTTPRequest-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = app;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = R9HTTPRequest/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9revolution9.R9HTTPRequest;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		6E63E26815003B5D0089672E /* Debug */ = {
+		DAACBFDF1F832F1B00B4F275 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4262D436890A3823A01B4D0E /* Pods-R9HTTPRequestTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/R9HTTPRequest.app/R9HTTPRequest";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "R9HTTPRequest/R9HTTPRequest-Prefix.pch";
-				INFOPLIST_FILE = "R9HTTPRequestTests/R9HTTPRequestTests-Info.plist";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = R9HTTPRequestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9revolution9.R9HTTPRequestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6E63E26915003B5D0089672E /* Release */ = {
+		DAACBFE01F832F1B00B4F275 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F8E6B3192C5CC820D3319D4 /* Pods-R9HTTPRequestTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/R9HTTPRequest.app/R9HTTPRequest";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "R9HTTPRequest/R9HTTPRequest-Prefix.pch";
-				INFOPLIST_FILE = "R9HTTPRequestTests/R9HTTPRequestTests-Info.plist";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = R9HTTPRequestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.9revolution9.R9HTTPRequestTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6E63E23115003B5C0089672E /* Build configuration list for PBXProject "R9HTTPRequest" */ = {
+		DAACBFC11F832F1B00B4F275 /* Build configuration list for PBXProject "R9HTTPRequest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E63E26215003B5D0089672E /* Debug */,
-				6E63E26315003B5D0089672E /* Release */,
+				DAACBFD91F832F1B00B4F275 /* Debug */,
+				DAACBFDA1F832F1B00B4F275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E63E26415003B5D0089672E /* Build configuration list for PBXNativeTarget "R9HTTPRequest" */ = {
+		DAACBFDB1F832F1B00B4F275 /* Build configuration list for PBXNativeTarget "R9HTTPRequest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E63E26515003B5D0089672E /* Debug */,
-				6E63E26615003B5D0089672E /* Release */,
+				DAACBFDC1F832F1B00B4F275 /* Debug */,
+				DAACBFDD1F832F1B00B4F275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E63E26715003B5D0089672E /* Build configuration list for PBXNativeTarget "R9HTTPRequestTests" */ = {
+		DAACBFDE1F832F1B00B4F275 /* Build configuration list for PBXNativeTarget "R9HTTPRequestTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E63E26815003B5D0089672E /* Debug */,
-				6E63E26915003B5D0089672E /* Release */,
+				DAACBFDF1F832F1B00B4F275 /* Debug */,
+				DAACBFE01F832F1B00B4F275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6E63E22E15003B5C0089672E /* Project object */;
+	rootObject = DAACBFBE1F832F1B00B4F275 /* Project object */;
 }
