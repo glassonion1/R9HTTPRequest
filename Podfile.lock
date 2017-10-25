@@ -1,32 +1,16 @@
 PODS:
-  - RxCocoa (4.0.0-beta.1):
-    - RxSwift (~> 4.0.0-beta.1)
-  - RxSwift (4.0.0-beta.1)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
 
 DEPENDENCIES:
-  - RxCocoa (from `https://github.com/ReactiveX/RxSwift.git`, branch `rxswift4.0-swift4.0`)
-  - RxSwift (from `https://github.com/ReactiveX/RxSwift.git`, branch `rxswift4.0-swift4.0`)
-
-EXTERNAL SOURCES:
-  RxCocoa:
-    :branch: rxswift4.0-swift4.0
-    :git: https://github.com/ReactiveX/RxSwift.git
-  RxSwift:
-    :branch: rxswift4.0-swift4.0
-    :git: https://github.com/ReactiveX/RxSwift.git
-
-CHECKOUT OPTIONS:
-  RxCocoa:
-    :commit: aacfcc894bd3bc3ea1b03d483720973ea0e02905
-    :git: https://github.com/ReactiveX/RxSwift.git
-  RxSwift:
-    :commit: aacfcc894bd3bc3ea1b03d483720973ea0e02905
-    :git: https://github.com/ReactiveX/RxSwift.git
+  - RxCocoa (~> 4.0.0)
+  - RxSwift (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  RxCocoa: 009b86b0b158d4a7e4a5fc29bbdc0688c44fa3bb
-  RxSwift: 9488787dfac649ffc1c4fddf3a3b4d6823d0b392
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
 
-PODFILE CHECKSUM: 2d0f51358343c80240b52707717bdd862a201c0c
+PODFILE CHECKSUM: 3995fa582076457329f27265349a4d60f41d0281
 
 COCOAPODS: 1.3.1
